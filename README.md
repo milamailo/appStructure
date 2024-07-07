@@ -1,0 +1,2 @@
+# appStructure
+simple app structure
