@@ -1,0 +1,13 @@
+python -m pip install --upgrade certifi
+python -m certifi
+
+
+import ssl
+context = ssl._create_unverified_context()
+
+
+import requests
+
+# Bypass SSL verification
+response = requests.get("https://example.com", verify=False)
+print(response.text)
