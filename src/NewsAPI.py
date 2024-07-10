@@ -1,5 +1,10 @@
-# requests needs to be instal through the terminal 'pip install requests'
 import requests
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 def fetch_top_headlines():
     """
@@ -8,10 +13,16 @@ def fetch_top_headlines():
     :return: A list of top headlines or None if an error occurs.
     """
     api_url = "https://newsapi.org/v2/top-headlines"
+    api_key = os.getenv("NEWS_API_KEY")
+
+    if not api_key:
+        print("API key not found. Please set the NEWS_API_KEY environment variable.")
+        return None
+
     params = {
         "country": "us",
         "category": "business",
-        "apiKey": "60d937e731f14acb84d596ba3e713d76"
+        "apiKey": api_key
     }
 
     try:
