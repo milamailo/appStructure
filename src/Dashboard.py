@@ -3,9 +3,10 @@ import textwrap
 from src.FileToList import strToDictList
 from src.IOOpration import readFromTxt
 from src.ListPrinter import dictPrint
+from src.NewsAPI import fetch_top_headlines
 from src.UserInputOpration import askQuestions
-from src.onlineRawData import onlineRequest
-from src.searchPage import search
+from src.OnlineRawData import onlineRequest
+from src.SearchPage import search
 
 def menu():
     """
@@ -17,7 +18,7 @@ def menu():
         print("Menu:")
         print("1. File Operation")
         print("2. HTML Source Search")
-        print("3. Option 3")
+        print("3. News API")
         print("4. Exit")
 
         # Get user choice
@@ -33,8 +34,7 @@ def menu():
                 empDictList = strToDictList(empStrList)
                 # Print the employee data as a formatted table
                 dictPrint(empDictList)
-                print("Press any key to go back to Dashboard")
-                input()
+                input("Press any key to go back to Dashboard...")
             case "2":
                 # Ask user for URL and text to search
                 questions = [
@@ -55,12 +55,19 @@ def menu():
                 # Print the search result
                 print("Founded Sentence/Paragraph:")
                 print(wrapped_result)
-                print("Press any key to go back to Dashboard")
-                input()
+                input("Press any key to go back to Dashboard...")
             case "3":
-                print("You selected Option 3")
-                print("Press any key to go back to Dashboard")
-                input()
+                print("You selected Fetch Data with API Call")
+                headlines = fetch_top_headlines()
+                if headlines:
+                    print("Top Business Headlines:")
+                    for i, article in enumerate(headlines, 1):
+                        title = textwrap.fill(article["title"], width=80)
+                        print(f"{i}. {title}")
+                        print("-" * 80)
+                else:
+                    print("Failed to fetch headlines.")
+                input("Press any key to go back to Dashboard...")
             case "4":
                 # Exit the menu
                 print("Exiting the App. Goodbye!")

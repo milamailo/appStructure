@@ -1,9 +1,9 @@
 from src.FileToList import strToDictList
 from src.IOOpration import readFromTxt
 from src.ListPrinter import dictPrint
-from src.dashboard import menu
-from src.onlineRawData import onlineRequest
-from src.searchPage import search
+from src.Dashboard import menu
+from src.OnlineRawData import onlineRequest
+from src.SearchPage import search
 
 def main():
     """
