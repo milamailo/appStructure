@@ -1,4 +1,10 @@
 def readFromTxt(filePath):
+    """
+    Reads lines from a text file and returns them as a list of strings.
+
+    :param filePath: The path to the text file to be read.
+    :return: A list of strings, each representing a line from the file.
+    """
     mode = "r"
     strList = []
     try:

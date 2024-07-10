@@ -1,4 +1,9 @@
 def dictPrint(dictList):
+    """
+    Prints a list of dictionaries in a formatted table with aligned columns.
+
+    :param dictList: The list of dictionaries to be printed.
+    """
     # Determine the maximum width for each column
     widths = {}
     for emp in dictList:
