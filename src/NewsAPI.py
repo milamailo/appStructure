@@ -20,16 +20,18 @@ def fetch_top_headlines():
         return None
 
     params = {
-        "country": "us",
+        "country": "ca",
         "category": "business",
         "apiKey": api_key
     }
 
     try:
         response = requests.get(api_url, params=params)
+        # print(response)
         response.raise_for_status()  # Raise an HTTPError for bad responses
 
         data = response.json()  # Parse the JSON response
+        # print(data)
         if data["status"] == "ok":
             return data["articles"]
         else:
